@@ -7,10 +7,10 @@ html,
 body {
   height: 100%;
   width: 100%;
-  background-color: rgba(0,183,206,1);
+  /*background-color: rgba(0,183,206,1);*/
 }
 body {
-  font-family: 'Black Ops One', cursive;
+  font-family: 'Open Sans', cursive;
 }
 hr {
   border-color: #F05F40;
@@ -184,9 +184,6 @@ fieldset[disabled] .btn-primary.active {
 }
 .btn-xl {
   padding: 15px 30px;
-position: fixed;
-right:    40%;
-bottom:   -1500%;
 }
 ::-moz-selection {
   color: white;
