@@ -83,41 +83,44 @@ a.button-link {
     /*background-color: grey;*/
     /*padding-bottom: 800px;*/
     width: 100%;
-    margin: 0;
+    margin: 0 auto;
+    text-align: center;
 }
 
 .content-wrapper {
     width: 80%;
     margin: 0 auto;
+    text-align: center;
 }
 
 .left-column {
     float: left;
-    display: inline;
+    /*display: inline-block;*/
     background-color: red;
     width: 300px;
-    text-align: center;
-    margin-right: 5px;
+    margin-right: 20px;
+    padding: 12px;
 }
 
 .center-column {
-    display: inline;
+    float: left;
+    /*display: inline-block;*/
     background-color: red;
     width: 300px;
-    text-align: center;
+    padding: 12px;
 }
 
 .right-column {
-    float: right;
-    display: inline;
+    float: left;
+    /*display: inline-block;*/
     background-color: red;
     width: 300px;
-    text-align: center;
-    margin-left: 5px;
+    margin-left: 20px;
+    padding: 12px;
 }
 
 .people-image, .place-image, .puppy-image {
-    width: 80px;
+    width: 50px;
 }
 
 
