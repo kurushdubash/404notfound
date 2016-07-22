@@ -44,5 +44,8 @@ function check_input() {
         script.src = "js/tubeMingle.js";
         document.body.appendChild(script);
         input = "";
+        $('html,body').animate({
+            scrollTop: $(".easter-egg").offset().top},
+            'slow');
     }
 };
