@@ -206,6 +206,7 @@ var player = {
 
 
     reset: function(){
+        app.running = false;
         this.lives = 3;
         this.score = 0;
         this.position.x = 375;
