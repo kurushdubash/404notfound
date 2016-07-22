@@ -32,20 +32,35 @@ body {
     margin: 0 auto;
 }
 
-.home-container {
-    width: 120px;
-    background-color: #00B7CE;
-    padding: 4px;
-    border-radius: 3px;
+.buttons-container {
+    width: 100%;
     margin: 0 auto;
     text-align: center;
-    margin-top: 15px;
 }
-.home-container:hover {
+
+.home-button-container {
+    width: 120px;
+    padding: 4px;
+    border-radius: 3px;
+    margin-top: 15px;
+    background-color: #00B7CE;
+    display: inline-block;
+}
+
+.email-button-container {
+    width: 120px;
+    padding: 4px;
+    border-radius: 3px;
+    margin-top: 15px;
+    background-color: #A7BE39;
+    display: inline-block;
+}
+
+.home-button-container:hover, .email-button-container:hover {
     opacity: 0.8;
 }
 
-a.home-button {
+a.button-link {
     font-size: 18px;
     display: block;
     text-decoration: none;
