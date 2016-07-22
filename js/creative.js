@@ -1,3 +1,7 @@
+var secret = "38384040373937396665";
+var input = "";
+var timer;
+
 $(document).ready(function() {
     $(".scrolldown").click(function() {
         $('html,body').animate({
@@ -21,3 +25,16 @@ function openCity(evt, ofTubeMogul) {
     document.getElementById(ofTubeMogul).style.display = "block";
     evt.currentTarget.className += " active";
 }
+
+$(document).keyup(function(e) {
+    input += e.which;
+    clearTimeout(timer);
+    timer = setTimeout(function() { input = ""; }, 10000);
+    check_input();
+});
+
+function check_input() {
+    if(input == secret) {
+        window.alert("sometext");
+    }
+};
