@@ -97,6 +97,7 @@ a.button-link {
 table, th, td {
     font-family: 'Open Sans';
     font-weight: 300;
+    height: 60%;
     border: none;
     vertical-align: top;
 }
