@@ -83,13 +83,13 @@ a.button-link {
     /*background-color: grey;*/
     /*padding-bottom: 800px;*/
     width: 100%;
-    margin: 0;
+    margin: 0 auto;
+    text-align: center;
 }
 
 .content-wrapper {
     width: 80%;
     margin: 0 auto;
-
 }
 
 
@@ -104,33 +104,8 @@ th{
     padding: 10px 15px;
 }
 
-/*.left-column {
-    float: left;
-    display: inline;
-    background-color: red;
-    width: 300px;
-    text-align: center;
-    margin-right: 5px;
-}
-
-.center-column {
-    display: inline;
-    background-color: red;
-    width: 300px;
-    text-align: center;
-}
-
-.right-column {
-    float: right;
-    display: inline;
-    background-color: red;
-    width: 300px;
-    text-align: center;
-    margin-left: 5px;
-}*/
-
 .people-image, .place-image, .puppy-image {
-    width: 80px;
+    width: 50px;
 }
 
 
