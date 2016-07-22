@@ -28,7 +28,7 @@ function check_input() {
         // document.getElementsByClassName()
         $('.error-image').remove();
         $('.home-container').remove();
-        $('.easter-egg').html("<canvas width='800' height='500' id='tubeMogulBreakBlock'><p>Your browser does not support this feature</p></canvas> ");
+        $('.easter-egg').html("<canvas width='800' height='500' id='tubeMogulBreakBlock' style='display: none;' ><p>Your browser does not support this feature</p></canvas>");
         var script = document.createElement( 'script' );
         script.type = 'text/javascript';
         script.src = "js/tubeMingle.js";
@@ -37,6 +37,9 @@ function check_input() {
         $('html,body').animate({
             scrollTop: $(".easter-egg").offset().top},
             'slow');
+        $("#tubeMogulBreakBlock").slideDown( 1000, function() {
+            $("#tubeMogulBreakBlock").removeAttribute("style");
+        });
     }
 };
 
