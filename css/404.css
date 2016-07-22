@@ -89,9 +89,22 @@ a.button-link {
 .content-wrapper {
     width: 80%;
     margin: 0 auto;
+
 }
 
-.left-column {
+
+table, th, td {
+   border: none;
+   vertical-align: top; 
+}
+
+
+th{
+    width: 33%;
+    padding: 10px 15px;
+}
+
+/*.left-column {
     float: left;
     display: inline;
     background-color: red;
@@ -114,7 +127,7 @@ a.button-link {
     width: 300px;
     text-align: center;
     margin-left: 5px;
-}
+}*/
 
 .people-image, .place-image, .puppy-image {
     width: 80px;
