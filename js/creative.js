@@ -57,16 +57,16 @@ function openCity(evt, list1, list2, list3, list4) {
     document.getElementById("h3peep").innerHTML = list2.name;
     document.getElementById("ppeep").innerHTML = list2.department;
     document.getElementById("p2peep").innerHTML = list2.description;
-    document.getElementById("divpeep").innerHTML = "<img src=" + list2.url + ">";
+    document.getElementById("divpeep").innerHTML = "<img src=" + list2.url + " class='people-image'>";
 
     document.getElementById("h3place").innerHTML = list3.name;
     document.getElementById("pplace").innerHTML = list3.description;
-    document.getElementById("divplace").innerHTML = "<img src=" + list3.url + ">";
+    document.getElementById("divplace").innerHTML = "<img src=" + list3.url + " class='place-image'>";
 
     document.getElementById("h3puppies").innerHTML = list4.name;
     document.getElementById("ppuppies").innerHTML = list4.breed;
     document.getElementById("p2puppies").innerHTML = list4.favoriteToy;
-    document.getElementById("divpuppies").innerHTML = "<img src=" + list4.url + ">";
+    document.getElementById("divpuppies").innerHTML = "<img src=" + list4.url + " class='puppy-image'>";
     evt.currentTarget.className += " active";
 }
 
