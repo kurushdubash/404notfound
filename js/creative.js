@@ -35,13 +35,14 @@ $(document).keyup(function(e) {
 
 function check_input() {
     if(input == secret || input.indexOf(secret) > -1) {
-        document.getElementsByClassName()
-
-        var parent = document.getElementsByClassName("error-block");
-        var child = document.getElementsByClassName("error-image");
-        var child2 = document.getElementsByClassName("home-container");
-        parent.removeChild(child);
-        parent.removeChild(child2);
-        window.alert("sometext");
+        // document.getElementsByClassName()
+        $('.error-image').remove();
+        $('.home-container').remove();
+        $('.easter-egg').html("<canvas width='800' height='500' id='tubeMogulBreakBlock'><p>Your browser does not support this feature</p></canvas> ");
+        var script = document.createElement( 'script' );
+        script.type = 'text/javascript';
+        script.src = "js/tubeMingle.js";
+        document.body.appendChild(script);
+        input = "";
     }
 };
