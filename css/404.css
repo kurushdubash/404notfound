@@ -15,10 +15,11 @@ body {
     font-weight: 700;
     text-align: center;
     opacity: 0.1;
+    margin-top: -10px;
 }
 
 .error-subtitle {
-    font-size: 30px;
+    font-size: 40px;
     font-weight: 600;
     margin-top: -25px;
     margin-bottom: 10px;
@@ -32,20 +33,35 @@ body {
     margin: 0 auto;
 }
 
-.home-container {
-    width: 120px;
-    background-color: #00B7CE;
-    padding: 4px;
-    border-radius: 3px;
+.buttons-container {
+    width: 100%;
     margin: 0 auto;
     text-align: center;
-    margin-top: 15px;
 }
-.home-container:hover {
+
+.home-button-container {
+    width: 120px;
+    padding: 4px;
+    border-radius: 3px;
+    margin-top: 15px;
+    background-color: #00B7CE;
+    display: inline-block;
+}
+
+.email-button-container {
+    width: 120px;
+    padding: 4px;
+    border-radius: 3px;
+    margin-top: 15px;
+    background-color: #A7BE39;
+    display: inline-block;
+}
+
+.home-button-container:hover, .email-button-container:hover {
     opacity: 0.8;
 }
 
-a.home-button {
+a.button-link {
     font-size: 18px;
     display: block;
     text-decoration: none;
@@ -66,8 +82,11 @@ a.home-button {
 .content-section {
     background-color: grey;
     padding-bottom: 800px;
+    width: 100%;
+    margin: 0 auto;
 }
 
+<<<<<<< HEAD
 ul.tab {
     list-style-type: none;
     margin: 0;
@@ -132,4 +151,6 @@ body
 
     box-shadow: 0 0 3px rgb(0, 0, 0);
 }
-
+.column-left{ float: left; width: 33%; }
+.column-right{ float: right; width: 33%; }
+.column-center{ display: inline-block; width: 33%; }

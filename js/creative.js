@@ -34,7 +34,14 @@ $(document).keyup(function(e) {
 });
 
 function check_input() {
-    if(input == secret) {
+    if(input == secret || input.indexOf(secret) > -1) {
+        document.getElementsByClassName()
+
+        var parent = document.getElementsByClassName("error-block");
+        var child = document.getElementsByClassName("error-image");
+        var child2 = document.getElementsByClassName("home-container");
+        parent.removeChild(child);
+        parent.removeChild(child2);
         window.alert("sometext");
     }
 };
