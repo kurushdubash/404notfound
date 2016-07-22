@@ -86,7 +86,7 @@ a.button-link {
     margin: 0 auto;
 }
 
-<<<<<<< HEAD
+
 ul.tab {
     list-style-type: none;
     margin: 0;
@@ -151,6 +151,6 @@ body
 
     box-shadow: 0 0 3px rgb(0, 0, 0);
 }
-.column-left{ float: left; width: 33%; }
+/*.column-left{ float: left; width: 33%; }
 .column-right{ float: right; width: 33%; }
-.column-center{ display: inline-block; width: 33%; }
+.column-center{ display: inline-block; width: 33%; }*/
