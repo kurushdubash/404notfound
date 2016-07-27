@@ -27,6 +27,8 @@ function check_input() {
     if(input == secret || input.indexOf(secret) > -1) {
         // document.getElementsByClassName()
         $('.error-image').remove();
+        $('.error-code').remove();
+        $('.error-subtitle').remove();
         $('.home-container').remove();
         $('.easter-egg').html("<canvas width='800' height='500' id='tubeMogulBreakBlock' style='display: none;' ><p>Your browser does not support this feature</p></canvas>");
         var script = document.createElement( 'script' );

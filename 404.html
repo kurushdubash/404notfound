@@ -2,8 +2,8 @@
 <html lang="en">
 <head>
     <meta charset="utf-8">
-    <!-- <meta http-equiv="X-UA-Compatible" content="IE=edge"> -->
-    <!-- <meta name="viewport" content="width=device-width, initial-scale=1"> -->
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>404 - Page Not Found</title>
     <link rel="icon" type="image/png" href="https://www.tubemogul.com/wp-content/themes/tubemogul/_img/_icons/favicon.png">
 
@@ -17,7 +17,17 @@
         <div class="error-code">404</div>
         <div class="error-subtitle">SH*T NOT FOUND</div>
         <div class="easter-egg"></div>
-        <img src="img/404.gif" class="error-image">
+        <div class="lose-container">
+            <img src="img/lose.png" class="emoticon-image">
+            <div class="loseAlert">You lose!</div>
+        </div>
+        <div class="win-container">
+            <img src="img/win.png" class="emoticon-image">
+            <div class="winAlert">You win!</div>
+        </div>
+        <div class="error-image-container">
+            <img src="img/404.gif" class="error-image">
+        </div>
         <div class="buttons-container">
             <div class="home-button-container">
                 <a href="https://www.tubemogul.com/" class="button-link">GO HOME</a>
@@ -26,52 +36,10 @@
                 <a href="mailto:platform_support@tubemogul.com" class="button-link">EMAIL US</a>
             </div>
         </div>
-        <!-- <div id="scrolldown"><button type="button">scroll down</button></div> -->
-        <img src="img/caret.png" class="scrolldown">
-    </div>
-
-    <div class="content-section">
-        <div class="content-wrapper">
-          <table class="content-table">
-          <tbody>
-                <tr class="titles">
-                    <th id="titlepeep"><img class="title-people hvr-bob" src="img/title-people.png"></th>
-                    <th id="titleplace"><img class="title-place hvr-bob" src="img/title-place.png"></th>
-                    <th id="titlepuppies"><img class="title-puppies hvr-bob" src="img/title-puppies.png"></th>
-                </tr>
-                <tr class="pictures">
-                    <th id="divpeep"></th>
-                    <th id="divplace"></th>
-                    <th id="divpuppies"></th>
-                </tr>
-                <tr class="name">
-                    <th id="h3peep"></th>
-                    <th id="h3place"></th>
-                    <th id="h3puppies"></th>
-                </tr>
-                <tr class="description">
-                    <th id="ppeep"></th>
-                    <th id="pplace"></th>
-                    <th id="ppuppies"></th>
-                </tr>
-                <tr class="2">
-                    <th id="p2peep"></th>
-                    <th id="p2place"></th>
-                    <th id="p2puppies"></th>
-                </tr>
-                <tr class="links">
-                    <th id="linkpeople"><a class="divlinkpeople" href="https://www.tubemogul.com/opportunities"">LEARN MORE</th>
-                    <th id="linkplace"><a class="divlinkplace" href="https://www.tubemogul.com/locations/">LEARN MORE</th>
-                    <th id="linkpuppies"><a class="divlinkpuppies" href="https://www.tubemogul.com/company-culture/">LEARN MORE</th>
-                </tr>
-            </tbody>
-          </table>
-        </div>
     </div>
 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
-    <script src="js/creative.js"></script>
-
+    <script src="js/404.js"></script>
 
 </body>
 

@@ -46,7 +46,9 @@ var app = {
         player.lives -= 1;
 
         if (player.lives < 1) {
-            window.alert("You lose!\nScore: " + player.score);
+            // window.alert("You lose!\nScore: " + player.score);
+            $(".loseAlert").text("You lose! Score: " + player.score);
+            $(".lose-container").slideDown( "slow", function() {});
             this.reset();
         }
         ball.reset();
@@ -156,6 +158,8 @@ function clickEvent(evt) {
             }
         }
     }
+    $(".lose-container").slideUp( "slow", function() {});
+    $(".win-container").slideUp( "slow", function() {});
 }
 
 $(document).click(clickEvent);
@@ -191,12 +195,12 @@ var player = {
         app.context.fillStyle = "rgba(0, 0, 0, .4)";
 
         app.context.font = "18px sans-serif";
-        app.context.fillText("Lives", 50, 20);
-        app.context.fillText("Score", 50, 120);
+        app.context.fillText("Lives", 40, 30);
+        app.context.fillText("Score", 40, 110);
 
         app.context.font = "48px sans-serif";
-        app.context.fillText(this.lives, 50, 75);
-        app.context.fillText(this.score, 50, 175);
+        app.context.fillText(this.lives, 40, 75);
+        app.context.fillText(this.score, 40, 155);
     },
 
     move: {
@@ -345,7 +349,9 @@ var ball = {
                 app.bricks.splice(i, 1);
 
             if (app.bricks.length == 0){
-                window.alert("You win!");
+                // window.alert("You win!");
+                $(".winAlert").text("You win!");
+                $(".win-container").slideDown( "slow", function() {});
                 app.reset();
             }
 
