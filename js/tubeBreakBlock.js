@@ -13,26 +13,21 @@ var app = {
         if (!this.context)
         {
             console.log("Error getting application context");
-            return; //TODO: notify user
+            return;
         }
 
-
-        this.setupBricks();
+        this.setupBlocks();
         this.update();
-
         return;
-
     },
 
     update : function(){
 
         app.clearContext();
-
-        app.drawBricks();
+        app.drawBlocks();
         ball.draw();
         ball.update();
         player.draw();
-
         requestAnimationFrame(app.update);
     },
 
@@ -42,7 +37,6 @@ var app = {
     },
 
     die : function(){
-        //TODO: better death!
         player.lives -= 1;
 
         if (player.lives < 1) {
@@ -51,87 +45,87 @@ var app = {
             $(".lose-container").slideDown( "slow", function() {});
             this.reset();
         }
+        player.position.x = 375;
         ball.reset();
     },
 
-    drawBricks : function(){
+    drawBlocks : function(){
 
-        this.bricks.forEach(function(brick){ brick.draw(); });
+        this.blocks.forEach(function(block){ block.draw(); });
 
     },
 
-    //TODO: this will change per level
-    setupBricks : function(){
+    setupBlocks : function(){
 
-        this.bricks = new Array();
+        this.blocks = new Array();
 
         var i = 0;
-        var brickTop = 50;
-        var brickBackLeft = 0;
+        var blockTop = 50;
+        var blockBackLeft = 0;
 
         for (i = 0; i < 10; i++)
         {
-            var brick = new Brick();
-            brick.position.x = brickBackLeft + (i * brick.size.width) + i;
-            brick.position.y = brickTop;
-            brick.health = 3;
-            this.bricks.push(brick);
+            var block = new Block();
+            block.position.x = blockBackLeft + (i * block.size.width) + i;
+            block.position.y = blockTop;
+            block.health = 3;
+            this.blocks.push(block);
         }
 
         for (i = 0; i < 10; i++)
         {
-            var brick = new Brick();
-            brick.position.x = brickBackLeft + (i * brick.size.width) + i;
-            brick.position.y = brickTop + brick.size.height + 4;
-            brick.health = 3;
-            this.bricks.push(brick);
+            var block = new Block();
+            block.position.x = blockBackLeft + (i * block.size.width) + i;
+            block.position.y = blockTop + block.size.height + 4;
+            block.health = 3;
+            this.blocks.push(block);
         }
 
         for (i = 0; i < 10; i++)
         {
-            var brick = new Brick();
-            brick.position.x = brickBackLeft + (i * brick.size.width) + i;
-            brick.position.y = brickTop + (2 * brick.size.height) + 8;
-            brick.health = 3;
-            this.bricks.push(brick);
+            var block = new Block();
+            block.position.x = blockBackLeft + (i * block.size.width) + i;
+            block.position.y = blockTop + (2 * block.size.height) + 8;
+            block.health = 3;
+            this.blocks.push(block);
         }
 
         for (i = 0; i < 10; i++)
         {
-            var brick = new Brick();
-            brick.position.x = brickBackLeft + (i * brick.size.width) + i;
-            brick.position.y = brickTop + (3 * brick.size.height) + 12;
-            brick.health = 2;
-            this.bricks.push(brick);
+            var block = new Block();
+            block.position.x = blockBackLeft + (i * block.size.width) + i;
+            block.position.y = blockTop + (3 * block.size.height) + 12;
+            block.health = 2;
+            this.blocks.push(block);
         }
 
         for (i = 0; i < 10; i++)
         {
-            var brick = new Brick();
-            brick.position.x = brickBackLeft + (i * brick.size.width) + i;
-            brick.position.y = brickTop + (4 * brick.size.height) + 16;
-            brick.health = 2;
-            this.bricks.push(brick);
+            var block = new Block();
+            block.position.x = blockBackLeft + (i * block.size.width) + i;
+            block.position.y = blockTop + (4 * block.size.height) + 16;
+            block.health = 2;
+            this.blocks.push(block);
         }
 
         for (i = 0; i < 10; i++)
         {
-            var brick = new Brick();
-            brick.position.x = brickBackLeft + (i * brick.size.width) + i;
-            brick.position.y = brickTop + (5 * brick.size.height) + 20;
-            brick.health = 1;
-            this.bricks.push(brick);
+            var block = new Block();
+            block.position.x = blockBackLeft + (i * block.size.width) + i;
+            block.position.y = blockTop + (5 * block.size.height) + 20;
+            block.health = 1;
+            this.blocks.push(block);
         }
 
     },
 
     reset : function(){
-        this.setupBricks();
+        this.setupBlocks();
         player.reset();
         ball.reset();
     },
 
-    bricks: [],
+    blocks: [],
 
     canvas: null,
     context : null,
@@ -195,12 +189,12 @@ var player = {
         app.context.fillStyle = "rgba(0, 0, 0, .4)";
 
         app.context.font = "18px sans-serif";
-        app.context.fillText("Lives", 40, 30);
-        app.context.fillText("Score", 40, 110);
+        app.context.fillText("Lives", 60, 30);
+        app.context.fillText("Score", 60, 110);
 
         app.context.font = "48px sans-serif";
-        app.context.fillText(this.lives, 40, 75);
-        app.context.fillText(this.score, 40, 155);
+        app.context.fillText(this.lives, 60, 75);
+        app.context.fillText(this.score, 60, 155);
     },
 
     move: {
@@ -235,7 +229,7 @@ var ball = {
     },
 
     physics: {
-        speed: 5,
+        speed: 4,
         angle: 0
     },
 
@@ -260,7 +254,7 @@ var ball = {
 
             app.context.save();
             app.context.translate(this.position.x + 25, this.position.y + 25);
-            app.context.rotate(this.physics.angle * this.physics.speed / 180);
+            app.context.rotate((this.physics.angle * this.physics.speed) / 180);
             app.context.translate(-this.position.x - 25, -this.position.y - 25);
             app.context.drawImage(ball_image, this.position.x - 25, this.position.y - 25);
             app.context.restore();
@@ -287,7 +281,7 @@ var ball = {
             if (this.position.y <= 0) //Top Bounds
                 this.direction.y = 1;
             if (this.position.y >= app.canvas.height) //Bottom Bounds
-                app.die(); //TODO: die
+                app.die();
 
             this.physics.angle++;
 
@@ -299,7 +293,7 @@ var ball = {
             }
 
             this.checkCollisionWithPlayer();
-            this.checkCollisionWithBricks();
+            this.checkCollisionWithBlocks();
 
             this.position.x += (this.physics.speed * this.direction.x);
             this.position.y += (this.physics.speed * this.direction.y);
@@ -320,78 +314,76 @@ var ball = {
         this.direction.x = ((this.position.x - player.position.x) / player.size.width) - .5;
 
         this.direction.y = -1;
-        this.physics.speed = ball.physics.speed + .1
+        this.physics.speed = ball.physics.speed + .05
 
     },
 
-    checkCollisionWithBricks : function(){
+    checkCollisionWithBlocks : function(){
 
         var i = 0;
-        for (i = 0; i < app.bricks.length; i++)
+        for (i = 0; i < app.blocks.length; i++)
         {
-            var brick = app.bricks[i];
+            var block = app.blocks[i];
 
-            if (this.position.y + this.size.height < brick.position.y)
+            if (this.position.y + this.size.height < block.position.y)
                 continue;
-            if (this.position.y > brick.position.y + brick.size.height)
+            if (this.position.y > block.position.y + block.size.height)
                 continue;
-            if (this.position.x > brick.position.x + brick.size.width)
+            if (this.position.x > block.position.x + block.size.width)
                 continue;
-            if (this.position.x + this.size.width < brick.position.x)
+            if (this.position.x + this.size.width < block.position.x)
                 continue;
 
             /* If the loop makes it this far, we have a collision */
-            brick.health -= 1;
+            block.health -= 1;
             this.physics.speed = ball.physics.speed + .05
             player.score += 20;
 
-            if (brick.health < 1)
-                app.bricks.splice(i, 1);
+            if (player.score % 1000 == 0){
+                player.lives++;
+            }
 
-            if (app.bricks.length == 0){
-                // window.alert("You win!");
+            if (block.health < 1)
+                app.blocks.splice(i, 1);
+
+            if (app.blocks.length == 0){
                 $(".winAlert").text("You win!");
                 $(".win-container").slideDown( "slow", function() {});
                 app.reset();
             }
 
-            //Update direction based on where we hit the brick
 
-            //Moving towards lower right
             if (this.direction.x > 0
-                && this.direction.y == 1)
+                && this.direction.y > 0)
             {
-                if (this.position.y > brick.position.y)
-                    this.direction.x = -1;
+                if (this.position.y > block.position.y)
+                    this.direction.x *= -1;
                 else
-                    this.direction.y = -1;
+                    this.direction.y *= -1;
             }
-            //Moving towards lower left
             else if (this.direction.x < 0
-                && this.direction.y == 1)
+                && this.direction.y > 0)
             {
-                if (this.position.y > brick.position.y)
-                    this.direction.x = 1;
+                if (this.position.y > block.position.y)
+                    this.direction.x *= -1;
                 else
-                    this.direction.y = -1;
+                    this.direction.y *= -1;
             }
-            //Moving towards upper right
             else if (this.direction.x > 0
                 && this.direction.y < 0)
             {
-                if (this.position.y > brick.position.y)
-                    this.direction.x = -1;
+                if (this.position.y < block.position.y)
+                    this.direction.x *= -1;
                 else
-                    this.direction.y = 1;
+                    this.direction.y *= -1;
             }
-            //Moving towards upper-left
             else if (this.direction.x < 0
                 && this.direction.y < 0)
             {
-                if (this.position.y > brick.position.y)
-                    this.direction.x = 1;
+                if (this.position.y < block.position.y)
+                    this.direction.x *= -1;
                 else
-                    this.direction.y = 1;
+                    this.direction.y *= -1;
 
             }
         }
@@ -399,7 +391,7 @@ var ball = {
 
 };
 
-var Brick = function(){
+var Block = function(){
 
     this.health = 3;
 
@@ -408,7 +400,6 @@ var Brick = function(){
         width: 80
     };
 
-    //Will be determined on setup
     this.position = {
         x: 0,
         y: 0
@@ -416,7 +407,7 @@ var Brick = function(){
 
 };
 
-Brick.prototype.draw = function(){
+Block.prototype.draw = function(){
 
     switch (this.health) {
         case 3:
