@@ -1,7 +1,7 @@
 /**
  * Created by jordan.milner on 7/21/16.
  */
-var app = {
+var game = {
 
     running: false,
 
@@ -12,7 +12,7 @@ var app = {
 
         if (!this.context)
         {
-            console.log("Error getting application context");
+            console.log("Error getting context");
             return;
         }
 
@@ -23,12 +23,12 @@ var app = {
 
     update : function(){
 
-        app.clearContext();
-        app.drawBlocks();
+        game.clearContext();
+        game.drawBlocks();
         ball.draw();
         ball.update();
         player.draw();
-        requestAnimationFrame(app.update);
+        requestAnimationFrame(game.update);
     },
 
     nextlevel : function(){
@@ -228,11 +228,11 @@ function onKeyDown(evt) {
 }
 
 function clickEvent(evt) {
-    if(app.running == false) {
+    if(game.running == false) {
         if (evt.offsetX >= 275 && evt.offsetX <= 525) {
             if (evt.offsetY >= 375 && evt.offsetY <= 425) {
-                app.running = true;
-                app.clearContext();
+                game.running = true;
+                game.clearContext();
             }
         }
     }
@@ -266,19 +266,19 @@ var player = {
     },
 
     draw : function(){
-        app.context.fillStyle = "rgb(147, 149, 152)";
-        app.context.fillRect(this.position.x, this.position.y, this.size.width, this.size.height);
+        game.context.fillStyle = "rgb(147, 149, 152)";
+        game.context.fillRect(this.position.x, this.position.y, this.size.width, this.size.height);
 
-        app.context.textAlign = "center";
-        app.context.fillStyle = "rgba(0, 0, 0, .4)";
+        game.context.textAlign = "center";
+        game.context.fillStyle = "rgba(0, 0, 0, .4)";
 
-        app.context.font = "18px sans-serif";
-        app.context.fillText("Lives", 60, 30);
-        app.context.fillText("Score", 60, 110);
+        game.context.font = "18px sans-serif";
+        game.context.fillText("Lives", 60, 30);
+        game.context.fillText("Score", 60, 110);
 
-        app.context.font = "48px sans-serif";
-        app.context.fillText(this.lives, 60, 75);
-        app.context.fillText(this.score, 60, 155);
+        game.context.font = "48px sans-serif";
+        game.context.fillText(this.lives, 60, 75);
+        game.context.fillText(this.score, 60, 155);
     },
 
     move: {
@@ -288,7 +288,7 @@ var player = {
 
 
     reset: function(){
-        app.running = false;
+        game.running = false;
         this.lives = 3;
         this.score = 0;
         this.position.x = 375;
@@ -324,24 +324,24 @@ var ball = {
 
     draw : function(){
 
-        if(app.running == false){
+        if(game.running == false){
             var mainMenu = new Image();
             mainMenu.src = 'img/BSU.png';
-            app.context.drawImage(mainMenu, 0, 0);
+            game.context.drawImage(mainMenu, 0, 0);
         }
 
-        if (app.running == true) {
-            app.context.fillStyle = "rgb(147, 149, 152)";
-            app.context.fillRect(this.position.x, this.position.y, this.size.width, this.size.height);
+        if (game.running == true) {
+            game.context.fillStyle = "rgb(147, 149, 152)";
+            game.context.fillRect(this.position.x, this.position.y, this.size.width, this.size.height);
             var ball_image = new Image();
             ball_image.src = 'img/BallLogo.png';
 
-            app.context.save();
-            app.context.translate(this.position.x + 25, this.position.y + 25);
-            app.context.rotate(this.physics.angle / 90);
-            app.context.translate(-this.position.x - 25, -this.position.y - 25);
-            app.context.drawImage(ball_image, this.position.x - 25, this.position.y - 25);
-            app.context.restore();
+            game.context.save();
+            game.context.translate(this.position.x + 25, this.position.y + 25);
+            game.context.rotate(this.physics.angle / 90);
+            game.context.translate(-this.position.x - 25, -this.position.y - 25);
+            game.context.drawImage(ball_image, this.position.x - 25, this.position.y - 25);
+            game.context.restore();
         }
 
 
@@ -357,15 +357,15 @@ var ball = {
     },
 
     update : function(){
-        if(app.running == true) {
+        if(game.running == true) {
             if (this.position.x <= 0) //Left Bounds
                 this.direction.x = 1;
-            if (this.position.x >= app.canvas.width) //Right Bounds
+            if (this.position.x >= game.canvas.width) //Right Bounds
                 this.direction.x = -1;
             if (this.position.y <= 0) //Top Bounds
                 this.direction.y = 1;
-            if (this.position.y >= app.canvas.height) //Bottom Bounds
-                app.die();
+            if (this.position.y >= game.canvas.height) //Bottom Bounds
+                game.die();
 
             this.physics.angle += this.physics.speed;
 
@@ -405,9 +405,9 @@ var ball = {
     checkCollisionWithBlocks : function(){
 
         var i = 0;
-        for (i = 0; i < app.blocks.length; i++)
+        for (i = 0; i < game.blocks.length; i++)
         {
-            var block = app.blocks[i];
+            var block = game.blocks[i];
 
             if (this.position.y + this.size.height < block.position.y)
                 continue;
@@ -429,18 +429,18 @@ var ball = {
             }
 
             if (block.health < 1)
-                app.blocks.splice(i, 1);
+                game.blocks.splice(i, 1);
 
-            if (app.blocks.length == 0)
+            if (game.blocks.length == 0)
             {
-                app.level++;
-                if(app.level == 4) {
+                game.level++;
+                if(game.level == 4) {
                     $(".winAlert").text("You win!");
                     $(".win-container").slideDown("slow", function () {});
-                    app.reset();
+                    game.reset();
                     return;
                 } else {
-                    app.nextlevel();
+                    game.nextlevel();
                     return;
                 }
             }
@@ -500,18 +500,18 @@ Block.prototype.draw = function(){
 
     switch (this.health) {
         case 3:
-            app.context.fillStyle = "rgb(85, 197, 208)"; //Medium Blue
+            game.context.fillStyle = "rgb(85, 197, 208)"; //Medium Blue
             break;
         case 2:
-            app.context.fillStyle = "rgb(203, 212, 47)"; //Light Green
+            game.context.fillStyle = "rgb(203, 212, 47)"; //Light Green
             break;
         case 1:
-            app.context.fillStyle = "rgb(205, 0, 122)"; //Pink
+            game.context.fillStyle = "rgb(205, 0, 122)"; //Pink
             break;
     }
 
     if (this.health > 0)
-        app.context.fillRect(this.position.x, this.position.y, this.size.width, this.size.height);
+        game.context.fillRect(this.position.x, this.position.y, this.size.width, this.size.height);
 };
 
-app.init();
+game.init();
