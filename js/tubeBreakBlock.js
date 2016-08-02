@@ -33,7 +33,7 @@ var game = {
 
     nextlevel : function(){
         this.setupBlocks();
-        player.position.x = 300;
+        player.position.x = 350;
         ball.reset();
     },
 
@@ -51,7 +51,7 @@ var game = {
             $(".lose-container").slideDown( "slow", function() {});
             this.reset();
         }
-        player.position.x = 300;
+        player.position.x = 350;
         ball.reset();
     },
 
@@ -248,7 +248,7 @@ var player = {
 
     // Defines initial position
     position: {
-        x: 375,
+        x: 350,
         y: 450
     },
 
@@ -291,7 +291,7 @@ var player = {
         game.running = false;
         this.lives = 3;
         this.score = 0;
-        this.position.x = 375;
+        this.position.x = 350;
         this.position.y = 450;
         this.move.left = false;
         this.move.right = false;
@@ -360,7 +360,7 @@ var ball = {
         if(game.running == true) {
             if (this.position.x <= 0) //Left Bounds
                 this.direction.x = 1;
-            if (this.position.x >= game.canvas.width) //Right Bounds
+            if (this.position.x >= game.canvas.width - this.size.width) //Right Bounds
                 this.direction.x = -1;
             if (this.position.y <= 0) //Top Bounds
                 this.direction.y = 1;
