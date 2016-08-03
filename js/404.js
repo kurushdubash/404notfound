@@ -3,15 +3,80 @@ var input = "";
 var timer;
 
 $(document).ready(function() {
-    $(".scrolldown").click(function() {
-        $('html,body').animate({
-            scrollTop: $(".content-section").offset().top},
-            'slow');
-    });
+    setTimeout(function(){
+            $("#randomGenerator").fadeIn(1500);
+        }, 1500);
+    // random = document.getElementById('randomGenerator');
+    // random.addEventListener("mouseover",function(){
+    //     this.src = "hover.jpg";
+    // });
+    // random.addEventListener("mouseout",function(){
+    //     this.src = "norm.png";
+    // });
+    $("#randomGenerator").click(function() {
+        $(".error-code").hide();
+        $(".error-subtitle").hide();
+        $(".error-image-container").hide();
+        $(".content-container").slideUp("slow");
+
+        // $(".content-container").hide();
+
+        animationsTest(function() {
+           var allthings = [person1, person2, person3, person4, person5];
+            var chosenOne = allthings[Math.floor(Math.random()*allthings.length)];
+            $(".content-type").html("MEET OUR PEOPLE");
+            $(".content-image").html("<img src=" + chosenOne.url + " class='content-image'>");
+            $(".content-title").html(chosenOne.name);
+            $(".content-subtitle").html(chosenOne.department);
+            $(".content-text").html(chosenOne.description);
+            var tmColors = [super_dark_blue,
+                            dark_blue,
+                            medium_blue,
+                            light_blue,
+                            pink,
+                            dark_green,
+                            medium_green,
+                            light_green,
+                            dark_gray,
+                            medium_gray];
+            // $(".content-container").css("background-color", tmColors[Math.floor(Math.random()*tmColors.length)]);
+            var chosenColor = tmColors[Math.floor(Math.random()*tmColors.length)]
+            $(".content-container").css("border", chosenColor + " solid 1px");
+            $(".content-type").css("color", chosenColor);
+            $(".content-container").slideDown("slow");
+            // $(".content-container").show();
+        });
+
+    })
+
+    function animationsTest (callback) {
+        // Test if ANY/ALL page animations are currently active
+        var testAnimationInterval = setInterval(function () {
+            if (! $.timers.length) { // any page animations finished
+                clearInterval(testAnimationInterval);
+                callback();
+            }
+        }, 25);
+    };
+
+    var super_dark_blue     = "#0085A5";
+    var dark_blue           = "#00B7CE";
+    var medium_blue         = "#56C5D0";
+    var light_blue          = "#94D6DA";
+    var super_light_blue    = "#C9E9E6";
+    var pink                = "#CD007A";
+    var dark_green          = "#70982B";
+    var medium_green        = "#A7BE39";
+    var light_green         = "#CBD42F";
+    var dark_gray           = "#4D4D4F";
+    var medium_gray         = "#939598";
+    var light_gray          = "#C7C8CA";
+
     var items = ['People', 'Places', 'Puppies'];
     var people = [person1, person2, person3, person4, person5];
     var places = [place1, place2, place3];
     var puppies = [puppy1, puppy2, puppy3];
+
     openCity(event, items[Math.floor(Math.random()*items.length)], people[Math.floor(Math.random()*people.length)],
         places[Math.floor(Math.random()*places.length)], puppies[Math.floor(Math.random()*puppies.length)]);
 });
@@ -30,6 +95,8 @@ function check_input() {
         $('.error-code').remove();
         $('.error-subtitle').remove();
         $('.home-container').remove();
+        $('.content-container').remove();
+        $('#randomGenerator').remove();
         $('.easter-egg').html("<canvas width='800' height='500' id='tubeMogulBreakBlock' style='display: none;' ><p>Your browser does not support this feature</p></canvas>");
         var script = document.createElement( 'script' );
         script.type = 'text/javascript';
