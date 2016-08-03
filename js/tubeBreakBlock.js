@@ -299,12 +299,44 @@ var player = {
 
 };
 
+var Powerup = {
+
+    position: {
+        x: 0,
+        y: 0
+    },
+
+    physics: {
+        speed: 4
+    },
+
+    direction: {
+        y: 1,
+        x:0
+    },
+    
+    radius: 3,
+    
+    spawn: function () {
+        
+    },
+    
+    draw: function () {
+        
+    },
+    
+    update: function () {
+        
+    }
+
+}
+
 var ball = {
 
 
     position: {
-        x: 300,
-        y: 300
+        x: 350,
+        y: 375
     },
 
     size: {
@@ -318,8 +350,8 @@ var ball = {
     },
 
     direction: {
-        x: 1, //Moving right
-        y: 1 //Moving down
+        x: -1,
+        y: -1
     },
 
     draw : function(){
@@ -348,10 +380,10 @@ var ball = {
     },
 
     reset : function(){
-        this.position.x = 300;
-        this.position.y = 300;
-        this.direction.x = 1;
-        this.direction.y = 1;
+        this.position.x = 350;
+        this.position.y = 375;
+        this.direction.x = -1;
+        this.direction.y = -1;
         this.physics.angle = 0;
         this.physics.speed = 5;
     },
@@ -359,11 +391,11 @@ var ball = {
     update : function(){
         if(game.running == true) {
             if (this.position.x <= 0) //Left Bounds
-                this.direction.x = 1;
+                this.direction.x *= -1;
             if (this.position.x >= game.canvas.width - this.size.width) //Right Bounds
-                this.direction.x = -1;
+                this.direction.x *= -1;
             if (this.position.y <= 0) //Top Bounds
-                this.direction.y = 1;
+                this.direction.y *= -1;
             if (this.position.y >= game.canvas.height) //Bottom Bounds
                 game.die();
 
@@ -385,6 +417,9 @@ var ball = {
     },
 
     checkCollisionWithPlayer : function(){
+        if (this.direction.y < 0){ // don't collide multiple times if it's already going up
+            return;
+        }
 
         if (this.position.y + this.size.height < player.position.y)
             return;
@@ -397,7 +432,12 @@ var ball = {
 
         this.direction.x = (((this.position.x + (this.size.width / 2)) - (player.position.x + (player.size.width / 2))) / player.size.width);
 
+        if (this.position.y + this.size.height/2 > player.position.y) // side block collision
+            this.direction.x = this.direction.x * 2
+
+
         this.direction.y = -1;
+
         this.physics.speed = ball.physics.speed + .05
 
     },
@@ -423,7 +463,7 @@ var ball = {
             this.physics.speed = ball.physics.speed + .05
             player.score += 20;
 
-            if (player.score % 1000 == 0)
+            if (player.score % 2000 == 0)
             {
                 player.lives++;
             }
@@ -498,15 +538,25 @@ var Block = function(){
 
 Block.prototype.draw = function(){
 
+    var grad1 = game.context.createLinearGradient(0,this.position.y, 0,this.position.y+this.size.height);
     switch (this.health) {
         case 3:
-            game.context.fillStyle = "rgb(85, 197, 208)"; //Medium Blue
+            grad1.addColorStop(0,"rgb(85, 197, 208)");
+            grad1.addColorStop(1,"rgb(0, 136, 165)");
+            //grad1.addColorStop(1, "rgb(85, 197, 208)");
+            game.context.fillStyle = grad1; //Medium Blue
             break;
         case 2:
-            game.context.fillStyle = "rgb(203, 212, 47)"; //Light Green
+            grad1.addColorStop(0,"rgb(203, 212, 47)");
+            grad1.addColorStop(1,"rgb(167, 190, 57)");
+            //grad1.addColorStop(1, "rgb(203, 212, 47)");
+            game.context.fillStyle = grad1; //Light Green
             break;
         case 1:
-            game.context.fillStyle = "rgb(205, 0, 122)"; //Pink
+            grad1.addColorStop(0,"rgb(205, 0, 122)");
+            grad1.addColorStop(1,"rgb(167, 0, 100)");
+            //grad1.addColorStop(1, "rgb(205, 0, 122)");
+            game.context.fillStyle = grad1; //Pink
             break;
     }
 
