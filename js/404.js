@@ -100,15 +100,13 @@ function check_input() {
         $('.easter-egg').html("<canvas width='800' height='500' id='tubeMogulBreakBlock' style='display: none;' ><p>Your browser does not support this feature</p></canvas>");
         var script = document.createElement( 'script' );
         script.type = 'text/javascript';
-        script.src = "js/tubeMingle.js";
+        script.src = "js/tubeBreakBlock.js";
         document.body.appendChild(script);
         input = "";
         $('html,body').animate({
             scrollTop: $(".easter-egg").offset().top},
             'slow');
-        $("#tubeMogulBreakBlock").slideDown( 1000, function() {
-            $("#tubeMogulBreakBlock").removeAttribute("style");
-        });
+        $("#tubeMogulBreakBlock").slideDown( 1000 );
     }
 };
 
